@@ -11,7 +11,7 @@ FirebaseNotebook uygulaması, firebase altyapısını kullanarak oluşturulan no
 ## Home Page
 ![home](https://github.com/Emreren11/FirebaseNotebook/assets/113580478/3831f74c-e796-4e3e-bb9c-fb8177ab9d37)
 
-- Kaydedilen notlar görüntülenir
+- Kaydedilen notlar görüntülenir.
 - Her notun başlığı ve not kısmının belirlenmiş bir bölümü görüntülenir.
 - Notların üzerine tıklandığında ***Note Page*** fragmanına yönlendirme yapılır.
 

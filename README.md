@@ -11,7 +11,7 @@ FirebaseNotebook uygulaması, firebase altyapısını kullanarak oluşturulan no
 ## Home Page
 ![home](https://github.com/Emreren11/FirebaseNotebook/assets/113580478/3831f74c-e796-4e3e-bb9c-fb8177ab9d37)
 
-- Kaydedilen notların görüntülendiği kısımdır. 
+- Kaydedilen notlar görüntülenir
 - Her notun başlığı ve not kısmının belirlenmiş bir bölümü görüntülenir.
 - Notların üzerine tıklandığında ***Note Page*** fragmanına yönlendirme yapılır.
 
@@ -20,7 +20,7 @@ FirebaseNotebook uygulaması, firebase altyapısını kullanarak oluşturulan no
 
 ***Add Note*** : Yeni bir not eklemek için kullanılır. Tıklandığında **Note Page** fragmanına yönlendirme yapılır.
 
-***Sign Out*** : Tıklandığında kullanıcının çıkışı gerçekleşmiş olur ve **Login Page" aktivitesine yönlendirme yapılır. Kullanıcının email adresi **Email** bölümüne eklenir.
+***Sign Out*** : Tıklandığında kullanıcının çıkışı gerçekleşmiş olur ve ***Login Page*** aktivitesine yönlendirme yapılır. Kullanıcının email adresi **Email** bölümüne eklenir.
 
 ## Note Page (New)
 ![newDetail](https://github.com/Emreren11/FirebaseNotebook/assets/113580478/a49124d5-b8d1-4bea-b6b2-426dfa550e99)

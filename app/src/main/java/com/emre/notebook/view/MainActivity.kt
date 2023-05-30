@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
             val navController = navHostFragment.navController
 
             try {
-                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment()
+                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment("new")
                 navController.navigate(action)
 
             } catch (e:Exception) {

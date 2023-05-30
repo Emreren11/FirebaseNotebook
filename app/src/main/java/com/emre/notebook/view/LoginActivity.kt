@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import com.emre.notebook.R
 import com.emre.notebook.databinding.ActivityLoginBinding
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -52,6 +53,12 @@ class LoginActivity : AppCompatActivity() {
 
         if (email.isNotEmpty() && pass.isNotEmpty()){
             auth.createUserWithEmailAndPassword(email, pass).addOnSuccessListener {
+
+                val note = hashMapOf<String, Any>()
+                note.put("title", "Sample Note")
+                note.put("mainText", "Sample Note")
+                note.put("date", Timestamp.now())
+                firestore.collection(email).document(note.get("title").toString()).set(note)
 
                 val intentToMain = Intent(this@LoginActivity, MainActivity::class.java)
                 startActivity(intentToMain)

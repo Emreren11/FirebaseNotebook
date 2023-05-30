@@ -34,3 +34,9 @@ FirebaseNotebook uygulaması, firebase altyapısını kullanarak oluşturulan no
 - Silme işlemine tıklandığında not Firebase içerisinden silinir ve ***Home Page*** fragmanına yönlendirme yapılır.
 - onPause çalıştığında değişiklikler kaydedilir.
 - onPause çalıştığında başlık boş olursa herhangi bir değişiklik yapılmaz
+
+
+## Navigation
+![nav](https://github.com/Emreren11/FirebaseNotebook/assets/113580478/f57d0b2a-2ff8-4e10-8e1d-8fd843a30e0f)
+
+

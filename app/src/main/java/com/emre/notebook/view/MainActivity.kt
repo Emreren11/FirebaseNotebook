@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
             } catch (e:Exception) {
 
-                Toast.makeText(this@MainActivity, e.localizedMessage, Toast.LENGTH_LONG).show()
+                Toast.makeText(this@MainActivity, "You are already on the adding page", Toast.LENGTH_LONG).show()
             }
         } else if (item.itemId == R.id.signOut) {
             val email = auth.currentUser!!.email

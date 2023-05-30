@@ -22,7 +22,8 @@ class DetailFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
-    private lateinit var title: String
+    private lateinit var documentID: String
+    private lateinit var info: String
     private var deleteControl = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,15 +52,15 @@ class DetailFragment : Fragment() {
         firestore = Firebase.firestore
 
         arguments?.let {
-            val info = DetailFragmentArgs.fromBundle(it).info
-            title = DetailFragmentArgs.fromBundle(it).title
+            info = DetailFragmentArgs.fromBundle(it).info
+            documentID = DetailFragmentArgs.fromBundle(it).documentID
 
             if (info == "new") {
                 binding.imageView.visibility = View.GONE
 
             } else {
                 binding.imageView.visibility = View.VISIBLE
-                val document = firestore.collection(auth.currentUser!!.email!!).document(title)
+                val document = firestore.collection(auth.currentUser!!.email!!).document(documentID)
                 document.get().addOnSuccessListener {
                     binding.titleText.setText(it.get("title").toString())
                     binding.mainText.setText(it.get("mainText").toString())
@@ -75,26 +76,42 @@ class DetailFragment : Fragment() {
         val mainText = binding.mainText.text.toString()
         val currentUser = auth.currentUser!!.email!!
 
-        if (!deleteControl) {
-            if (titleText.isNotEmpty()) {
-                val note = hashMapOf(
-                    "title" to titleText,
-                    "mainText" to mainText,
-                    "date" to Timestamp.now()
-                )
-                firestore.collection(currentUser).document(titleText).set(note)
-                if (!title.equals(titleText)) {
-                    firestore.collection(currentUser).document(title).delete()
+
+        if (info == "new") {
+
+                if (titleText.isNotEmpty()) {
+                    val note = hashMapOf(
+                        "title" to titleText,
+                        "mainText" to mainText,
+                        "date" to Timestamp.now()
+                    )
+                    firestore.collection(currentUser).add(note)
+
+                } else {
+                    Toast.makeText(requireContext(), "The note couldn't be saved. Please fill in the title of your note for it to be saved.", Toast.LENGTH_LONG).show()
                 }
-            } else {
-                Toast.makeText(requireContext(), "The note couldn't be saved. Please fill in the title of your note for it to be saved.", Toast.LENGTH_LONG).show()
+
+        } else {
+
+            if (!deleteControl) {
+                if (titleText.isNotEmpty()) {
+                    val note = hashMapOf(
+                        "title" to titleText,
+                        "mainText" to mainText,
+                        "date" to Timestamp.now()
+                    )
+                    firestore.collection(currentUser).document(documentID).set(note)
+                } else {
+                    Toast.makeText(requireContext(), "The note couldn't be saved. Please fill in the title of your note for it to be saved.", Toast.LENGTH_LONG).show()
+                }
             }
         }
     }
 
     private fun delete() {
         val currentUser = auth.currentUser!!.email!!
-        firestore.collection(currentUser).document(title).delete()
+        firestore.collection(currentUser).document(documentID).delete()
+
 
         val action = DetailFragmentDirections.actionDetailFragmentToHomeFragment()
         Navigation.findNavController(binding.root).navigate(action)

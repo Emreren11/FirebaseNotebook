@@ -70,8 +70,8 @@ class HomeFragment : Fragment() {
                         for (document in documents) {
                             val title = document.get("title") as String
                             val mainText = document.get("mainText") as String
-
-                            val note = Notes(title, mainText)
+                            val documentID = document.id
+                            val note = Notes(title, mainText, documentID)
                             noteList.add(note)
 
                         }

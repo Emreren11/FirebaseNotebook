@@ -24,8 +24,8 @@ class NoteAdapter(private val noteList: ArrayList<Notes>): RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: NoteHolder, position: Int) {
-        val title = noteList[position].title
-        holder.binding.rcTextView.text = title
+        val documentID = noteList[position].documentID
+        holder.binding.rcTextView.text = noteList[position].title
         val mainText = noteList[position].mainText
         if (mainText.isEmpty()) {
             holder.binding.rcMainTextView.visibility = View.GONE
@@ -36,7 +36,7 @@ class NoteAdapter(private val noteList: ArrayList<Notes>): RecyclerView.Adapter<
         }
 
         holder.itemView.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment("old", title)
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment("old", documentID)
             Navigation.findNavController(it).navigate(action)
         }
     }
